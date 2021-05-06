@@ -7,11 +7,11 @@ const Campaigns = function Campaigns({ campaignType }) {
   let dispatch = advanceDispatch(reducerForCampaignsPage, currentState);
 
   return (
-    <div>
-      <h1>
-        Render List of all the campaigns with the provided type - {campaignType}
-      </h1>
-
+    <div style={{ padding: "20px 150px" }}>
+      <p>
+        Render List of all the campaigns with the provided type -{" "}
+        <strong>{campaignType}</strong>
+      </p>
       <select
         value={campaignType}
         onChange={(e) =>
@@ -31,9 +31,11 @@ const Campaigns = function Campaigns({ campaignType }) {
 
 Campaigns.getInitialProps = ({ query }) => {
   const { campaignType } = query;
+  const defaultCampaignType = "all";
 
   return {
-    campaignType: typeof campaignType === "string" ? campaignType : undefined,
+    campaignType:
+      typeof campaignType === "string" ? campaignType : defaultCampaignType,
   };
 };
 
